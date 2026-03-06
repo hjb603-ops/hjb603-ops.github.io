@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Production Diary | Abdul Raheem Kashif</title>
+  <title>Abdul Raheem Kashif | Computer Science Portfolio</title>
   <style>
     :root {
       --bg: #f3f7fc;
       --bg-2: #eaf1fb;
-      --surface: rgba(255, 255, 255, 0.92);
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-solid: #ffffff;
       --text: #172033;
       --muted: #5b6475;
       --primary: #163b72;
       --primary-2: #2457a6;
+      --accent: #4f8df5;
+      --accent-soft: #dce9ff;
       --border: rgba(22, 59, 114, 0.12);
       --shadow: 0 18px 40px rgba(20, 43, 82, 0.10);
+      --shadow-hover: 0 24px 48px rgba(20, 43, 82, 0.16);
       --radius: 22px;
-      --max: 900px;
+      --max: 1140px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -32,90 +37,735 @@
       background:
         radial-gradient(circle at top left, rgba(79, 141, 245, 0.12), transparent 28%),
         radial-gradient(circle at top right, rgba(36, 87, 166, 0.10), transparent 26%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 35%, #f7faff 100%);
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 28%, #f7faff 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
       width: min(var(--max), 92%);
       margin: 0 auto;
-      padding: 42px 0 60px;
     }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: var(--primary);
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: bold;
-      text-decoration: none;
+      color: var(--primary);
+      letter-spacing: 0.2px;
     }
 
-    .back-link:hover {
-      text-decoration: underline;
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
     }
 
-    .card, .entry {
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      background: rgba(79, 141, 245, 0.08);
+    }
+
+    .hero {
+      padding: 72px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 26px;
-      margin-bottom: 20px;
       backdrop-filter: blur(10px);
     }
 
-    h1, h2 {
+    .hero-main {
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(79, 141, 245, 0.14), transparent 65%);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      color: var(--primary);
+      margin-bottom: 14px;
+      max-width: 10ch;
+    }
+
+    .subtitle {
+      font-size: 1.12rem;
+      font-weight: bold;
+      color: #24324a;
+      margin-bottom: 12px;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: 0.22s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: 0 14px 30px rgba(36, 87, 166, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(36, 87, 166, 0.24);
+    }
+
+    .btn-secondary {
+      background: #f8fbff;
+      color: var(--primary);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #edf4ff;
+      transform: translateY(-2px);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .profile-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f7fbff, #edf4ff);
+      border: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 1.35rem;
+      font-weight: bold;
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    .profile-badge h2 {
+      color: var(--primary);
+      font-size: 1.15rem;
+      margin-bottom: 2px;
+    }
+
+    .profile-badge p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .highlight-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .highlight-list li {
+      padding: 14px 14px 14px 16px;
+      border-radius: 16px;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .highlight-list strong {
+      color: var(--text);
+    }
+
+    section {
+      padding: 18px 0 26px;
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .content-card {
+      padding: 28px;
+    }
+
+    .content-card p + p {
+      margin-top: 12px;
+    }
+
+    .projects-grid,
+    .skills-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .project-card,
+    .skill-card,
+    .contact-card {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: 0.22s ease;
+    }
+
+    .project-card:hover,
+    .skill-card:hover,
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .project-top h3 {
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 7px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .project-meta strong {
+      color: var(--text);
+    }
+
+    .project-links {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 6px;
+    }
+
+    .project-links a {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .skill-card {
+      padding: 22px;
+    }
+
+    .skill-card h3 {
       color: var(--primary);
       margin-bottom: 10px;
     }
 
-    p {
+    .skill-card ul {
+      margin-left: 18px;
       color: var(--muted);
+    }
+
+    .skill-card li + li {
+      margin-top: 8px;
+    }
+
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .reflection-box {
+      background: #fbfdff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .reflection-box h3 {
+      color: var(--primary);
       margin-bottom: 10px;
     }
 
-    strong {
-      color: var(--text);
+    .reflection-box p {
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .contact-card {
+      padding: 22px;
+    }
+
+    .contact-card h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      color: var(--muted);
+    }
+
+    .contact-card a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a class="back-link" href="index.html">← Back to Portfolio</a>
 
-    <div class="card">
-      <h1>Production Diary</h1>
-      <p>
-        This page records the main improvements made to my website and explains how those changes improved usability, structure, and presentation.
-      </p>
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">ARK</div>
+        <span>Abdul Raheem Kashif</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#reflection">Reflection</a>
+        <a href="#contact">Contact</a>
+        <a href="maths.html">CS Maths & Tools</a>
+        <a href="diary.html">Production Diary</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="entry">
-      <h2>Entry 1 — Initial portfolio build</h2>
-      <p><strong>Date:</strong> 6 March 2026</p>
-      <p><strong>What I did:</strong> I created the first version of my GitHub Pages portfolio and added core sections such as About, Projects, Skills, and Contact.</p>
-      <p><strong>What I learned:</strong> I learned how to structure a static website using HTML and publish it online using GitHub Pages.</p>
-    </div>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="panel hero-main">
+        <span class="eyebrow">Computer Science Student • University of York</span>
+        <h1>Abdul Raheem Kashif</h1>
+        <p class="subtitle">Aspiring software developer with an interest in web development, backend systems, and data-driven applications.</p>
+        <p class="hero-text">
+          I am building a strong foundation in programming, web technologies, databases, and computer systems.
+          My focus is on creating software that is clear, practical, and professionally presented.
+        </p>
 
-    <div class="entry">
-      <h2>Entry 2 — Visual and usability improvements</h2>
-      <p><strong>Date:</strong> 6 March 2026</p>
-      <p><strong>What I changed:</strong> I redesigned the website using a more professional layout with a hero section, card components, improved spacing, clearer buttons, and consistent navigation.</p>
-      <p><strong>Why it matters:</strong> These changes make the site easier to scan, visually cleaner, and more consistent for the user.</p>
-    </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="maths.html">Open Maths Tool</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
 
-    <div class="entry">
-      <h2>Entry 3 — Adding the CS Maths page</h2>
-      <p><strong>Date:</strong> 6 March 2026</p>
-      <p><strong>What I changed:</strong> I created a separate maths page containing an interactive binary and decimal converter using JavaScript.</p>
-      <p><strong>Why it matters:</strong> This gave the portfolio a stronger technical element and showed how a simple computer science maths concept can be turned into a usable tool.</p>
-    </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>3+</strong>
+            <span>Portfolio-ready projects</span>
+          </div>
+          <div class="metric">
+            <strong>HTML/CSS/JS</strong>
+            <span>Web development stack</span>
+          </div>
+          <div class="metric">
+            <strong>York CS</strong>
+            <span>Academic foundation</span>
+          </div>
+        </div>
+      </div>
 
-    <div class="entry">
-      <h2>Entry 4 — Making projects more professional</h2>
-      <p><strong>Date:</strong> 6 March 2026</p>
-      <p><strong>What I changed:</strong> I expanded my project descriptions so they include summaries, technologies, my contribution, and one challenge solved.</p>
-      <p><strong>Why it matters:</strong> This makes the portfolio more useful for academic review and gives visitors a clearer picture of my skills and thinking.</p>
+      <aside class="panel hero-side">
+        <div class="profile-badge">
+          <div class="avatar">ARK</div>
+          <div>
+            <h2>Quick Profile</h2>
+            <p>First-year Computer Science undergraduate with a growing portfolio of technical work.</p>
+          </div>
+        </div>
+
+        <ul class="highlight-list">
+          <li><strong>Core interests:</strong> web development, backend systems, and software design</li>
+          <li><strong>Current tools:</strong> HTML, CSS, JavaScript, Python, Java, SQL, GitHub</li>
+          <li><strong>Strengths:</strong> structured thinking, clarity, consistency, and willingness to improve</li>
+        </ul>
+      </aside>
     </div>
-  </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about">
+      <div class="section-heading">
+        <h2>About Me</h2>
+        <p>A concise overview of who I am, what I study, and the type of work I want to grow into.</p>
+      </div>
+
+      <div class="panel content-card">
+        <p>
+          I am a Computer Science student at the University of York with an interest in building digital products that are organised, reliable, and easy to use. Through my studies, I have been developing technical skills in programming, web development, databases, and computer systems.
+        </p>
+        <p>
+          I enjoy turning ideas into practical software and presenting work in a clear and professional way. My current goal is to continue improving my technical ability through coursework, personal projects, and future internship or placement opportunities.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-heading">
+        <h2>Featured Projects</h2>
+        <p>Each project includes a summary, technologies used, my contribution, a challenge I addressed, and relevant links.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Professional Portfolio Website</h3>
+            <span class="tag">Web Project</span>
+          </div>
+          <p>A multi-page personal portfolio designed to present my background, skills, coursework connections, and technical interests in a professional format.</p>
+          <div class="project-meta">
+            <p><strong>Tech stack:</strong> HTML, CSS, JavaScript, GitHub Pages</p>
+            <p><strong>My contribution:</strong> I planned the layout, wrote the content, styled the interface, and improved the site structure for clarity and usability.</p>
+            <p><strong>Challenge:</strong> The main challenge was making the website look professional while keeping it simple and readable. I solved this by using consistent spacing, strong headings, card layouts, and visible navigation.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/hjb603-ops/hjb603-ops.github.io" target="_blank">Source Code</a>
+            <a href="https://hjb603-ops.github.io/" target="_blank">Live Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>CS Maths Binary Converter</h3>
+            <span class="tag">JavaScript Tool</span>
+          </div>
+          <p>An interactive tool that converts numbers between binary and decimal, supported by a clear explanation of the underlying maths.</p>
+          <div class="project-meta">
+            <p><strong>Tech stack:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>My contribution:</strong> I created the page layout, wrote the conversion logic, and added input validation to improve the user experience.</p>
+            <p><strong>Challenge:</strong> I wanted the page to be both functional and understandable. I solved this by pairing the tool with a short plain-English explanation and an example calculation.</p>
+          </div>
+          <div class="project-links">
+            <a href="maths.html" target="_blank">Open Tool</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Student Budget Tracker Concept</h3>
+            <span class="tag">Data / Planning</span>
+          </div>
+          <p>A conceptual budgeting tool for university students, intended to organise expenses, categorise spending, and support better financial awareness.</p>
+          <div class="project-meta">
+            <p><strong>Tech stack:</strong> Python, SQL, HTML, CSS</p>
+            <p><strong>My contribution:</strong> I focused on the overall idea, interface planning, and how the information would be structured in a database-backed system.</p>
+            <p><strong>Challenge:</strong> The key challenge was deciding how to organise the data clearly. I addressed this by separating users, categories, and transactions into distinct logical entities.</p>
+          </div>
+          <div class="project-links">
+            <a href="#contact">Details Available on Request</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-heading">
+        <h2>Skills and Tools</h2>
+        <p>A mix of technical capability, academic knowledge, and professional strengths.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Programming</h3>
+          <ul>
+            <li>Python fundamentals and problem solving</li>
+            <li>Java for coursework and core programming practice</li>
+            <li>JavaScript for interactivity and simple tools</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Web Development</h3>
+          <ul>
+            <li>HTML for structure and semantic content</li>
+            <li>CSS for layout, visual hierarchy, and responsiveness</li>
+            <li>GitHub Pages for deployment and hosting</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Data and Systems</h3>
+          <ul>
+            <li>Database fundamentals and SQL basics</li>
+            <li>Understanding of entities, relationships, and normalisation</li>
+            <li>Awareness of how software interacts with computer systems</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Professional Strengths</h3>
+          <ul>
+            <li>Clear communication</li>
+            <li>Attention to detail</li>
+            <li>User-focused thinking</li>
+            <li>Consistency and willingness to improve</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="section-heading">
+        <h2>How This Links to Computer Architecture and Databases</h2>
+        <p>This portfolio also connects to topics from my wider Computer Science studies.</p>
+      </div>
+
+      <div class="panel content-card">
+        <div class="reflection-grid">
+          <div class="reflection-box">
+            <h3>Computer Architecture</h3>
+            <p>
+              Even though this is a static website, it still depends on real computing hardware. When a visitor loads the site, requests are handled by servers running on processors, memory, and storage systems. Learning computer architecture helps me understand performance, efficiency, and the wider system-level context behind software.
+            </p>
+          </div>
+
+          <div class="reflection-box">
+            <h3>Databases</h3>
+            <p>
+              This portfolio is not database-driven, but many future applications are. Studying databases has helped me think about how information should be structured, stored, retrieved, and related. That is directly useful when planning tools such as budgeting systems, trackers, and other data-focused applications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading">
+        <h2>Contact</h2>
+        <p>Professional contact details and online profile links.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:hjb603@york.ac.uk">hjb603@york.ac.uk</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Location</h3>
+          <p>York, United Kingdom</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/hjb603-ops" target="_blank">github.com/hjb603-ops</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Abdul Raheem Kashif | Computer Science Portfolio</p>
+    </div>
+  </footer>
+
 </body>
 </html>
