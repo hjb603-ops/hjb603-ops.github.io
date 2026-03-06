@@ -2,24 +2,177 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Name – Computer Science Undergraduate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio Website</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 1.5rem; line-height: 1.6; }
-    header { border-bottom: 2px solid #333; margin-bottom: 1rem; }
-    h1 { margin-bottom: 0.2rem; }
-    .tagline { font-style: italic; color: #555; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1f3c88;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #163172;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    section {
+      margin-bottom: 35px;
+    }
+
+    h1, h2 {
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .card {
+      background: #eef2f7;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #1f3c88;
+      color: white;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      background: #1f3c88;
+      color: white;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .button:hover {
+      background: #163172;
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Raheem</h1>
-    <p class="tagline">Undergrad Computer Science student from universoty of York </p>
+    <h1>Welcome to My Portfolio Website</h1>
+    <p>Hello! My name is YOUR NAME and this is my first website.</p>
   </header>
- 
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#tools">CS Maths & Tools</a>
+    <a href="#diary">Production Diary</a>
+  </nav>
+
   <main>
-    <h2>Welcome</h2>
-    <p>This is my professional portfolio website. Here you can find my projects, skills, and contact details.</p>
+    <section id="home">
+      <h2>Home</h2>
+      <p>This website was created as part of my web development practical. It shows my work, interests, and what I am learning.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a student learning web development. I am interested in technology, coding, and building websites.</p>
+      <div class="card">
+        <p><strong>Skills I am developing:</strong></p>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Website design</li>
+          <li>Usability and user experience</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="card">
+        <h3>My First Website</h3>
+        <p>I created and published my first website using GitHub Pages.</p>
+      </div>
+      <div class="card">
+        <h3>Usability Heuristics Task</h3>
+        <p>I reviewed websites using Jakob Nielsen’s 10 usability heuristics and used the ideas to improve my own site.</p>
+      </div>
+    </section>
+
+    <section id="tools">
+      <h2>CS Maths & Tools</h2>
+      <p>Here are some tools and topics I am learning in computer science:</p>
+      <ul>
+        <li>GitHub</li>
+        <li>HTML and CSS</li>
+        <li>Website testing</li>
+        <li>Usability heuristics</li>
+        <li>Problem solving</li>
+      </ul>
+    </section>
+
+    <section id="diary">
+      <h2>Production Diary</h2>
+      <div class="card">
+        <p><strong>Date:</strong> 6 March 2026</p>
+        <p><strong>Task:</strong> Building and improving my portfolio website.</p>
+        <p><strong>What I did:</strong> I created my website using HTML, added clear navigation, and organised the content into sections so it is easy to use.</p>
+        <p><strong>What I learned:</strong> I learned that a website should be simple, clear, and consistent. Good navigation helps users find information quickly.</p>
+        <p><strong>Reflection:</strong> The hardest part was organising the page clearly, but I improved it by using headings, sections, and a navigation menu.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Useful Link</h2>
+      <p>Visit <a href="https://github.com" target="_blank">GitHub</a> to manage and publish your website.</p>
+      <a class="button" href="https://github.com" target="_blank">Go to GitHub</a>
+    </section>
   </main>
+
+  <footer>
+    <p>© 2026 YOUR NAME | My Portfolio Website</p>
+  </footer>
+
 </body>
 </html>
- 
