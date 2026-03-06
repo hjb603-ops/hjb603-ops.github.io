@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Diary | Abdul Raheem Kashif</title>
+  <style>
+    :root {
+      --bg: #f3f7fc;
+      --bg-2: #eaf1fb;
+      --surface: rgba(255, 255, 255, 0.92);
+      --text: #172033;
+      --muted: #5b6475;
+      --primary: #163b72;
+      --primary-2: #2457a6;
+      --border: rgba(22, 59, 114, 0.12);
+      --shadow: 0 18px 40px rgba(20, 43, 82, 0.10);
+      --radius: 22px;
+      --max: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(79, 141, 245, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(36, 87, 166, 0.10), transparent 26%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 35%, #f7faff 100%);
+    }
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+      padding: 42px 0 60px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .card, .entry {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <div class="card">
+      <h1>Production Diary</h1>
+      <p>
+        This page records the main improvements made to my website and explains how those changes improved usability, structure, and presentation.
+      </p>
+    </div>
+
+    <div class="entry">
+      <h2>Entry 1 — Initial portfolio build</h2>
+      <p><strong>Date:</strong> 6 March 2026</p>
+      <p><strong>What I did:</strong> I created the first version of my GitHub Pages portfolio and added core sections such as About, Projects, Skills, and Contact.</p>
+      <p><strong>What I learned:</strong> I learned how to structure a static website using HTML and publish it online using GitHub Pages.</p>
+    </div>
+
+    <div class="entry">
+      <h2>Entry 2 — Visual and usability improvements</h2>
+      <p><strong>Date:</strong> 6 March 2026</p>
+      <p><strong>What I changed:</strong> I redesigned the website using a more professional layout with a hero section, card components, improved spacing, clearer buttons, and consistent navigation.</p>
+      <p><strong>Why it matters:</strong> These changes make the site easier to scan, visually cleaner, and more consistent for the user.</p>
+    </div>
+
+    <div class="entry">
+      <h2>Entry 3 — Adding the CS Maths page</h2>
+      <p><strong>Date:</strong> 6 March 2026</p>
+      <p><strong>What I changed:</strong> I created a separate maths page containing an interactive binary and decimal converter using JavaScript.</p>
+      <p><strong>Why it matters:</strong> This gave the portfolio a stronger technical element and showed how a simple computer science maths concept can be turned into a usable tool.</p>
+    </div>
+
+    <div class="entry">
+      <h2>Entry 4 — Making projects more professional</h2>
+      <p><strong>Date:</strong> 6 March 2026</p>
+      <p><strong>What I changed:</strong> I expanded my project descriptions so they include summaries, technologies, my contribution, and one challenge solved.</p>
+      <p><strong>Why it matters:</strong> This makes the portfolio more useful for academic review and gives visitors a clearer picture of my skills and thinking.</p>
+    </div>
+  </div>
+</body>
+</html>
