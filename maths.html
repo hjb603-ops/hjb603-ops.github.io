@@ -1,76 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS Maths Tools</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Maths & Tools | Abdul Raheem Kashif</title>
+  <style>
+    :root {
+      --bg: #f3f7fc;
+      --bg-2: #eaf1fb;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-solid: #ffffff;
+      --text: #172033;
+      --muted: #5b6475;
+      --primary: #163b72;
+      --primary-2: #2457a6;
+      --accent-soft: #dce9ff;
+      --border: rgba(22, 59, 114, 0.12);
+      --shadow: 0 18px 40px rgba(20, 43, 82, 0.10);
+      --radius: 22px;
+      --max: 960px;
+    }
 
-<style>
-body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;padding:0}
-header{background:#0b3d91;color:white;padding:25px;text-align:center}
-main{max-width:800px;margin:30px auto;padding:25px;background:white;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
-h2{color:#0b3d91}
-input,button{padding:10px;margin:10px 0;font-size:16px}
-button{background:#0b3d91;color:white;border:none;border-radius:5px;cursor:pointer}
-button:hover{background:#072a66}
-.result{margin-top:15px;font-weight:bold}
-a{color:#0b3d91;text-decoration:none;font-weight:bold}
-</style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<script>
-function toDecimal(){
-let binary=document.getElementById("binary").value;
-let decimal=parseInt(binary,2);
-if(isNaN(decimal)) decimal="Invalid binary number";
-document.getElementById("result1").innerText="Decimal: "+decimal;
-}
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(79, 141, 245, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(36, 87, 166, 0.10), transparent 26%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 35%, #f7faff 100%);
+    }
 
-function toBinary(){
-let decimal=document.getElementById("decimal").value;
-let binary=parseInt(decimal).toString(2);
-if(decimal==="") binary="";
-document.getElementById("result2").innerText="Binary: "+binary;
-}
-</script>
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+      padding: 42px 0 60px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card h1 {
+      color: var(--primary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #f8fbff;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 12px 24px rgba(36, 87, 166, 0.16);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .result {
+      margin-top: 14px;
+      min-height: 52px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    .example {
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--primary);
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function toDecimal() {
+      const binary = document.getElementById("binary").value.trim();
+      const result = document.getElementById("result1");
+
+      if (!/^[01]+$/.test(binary)) {
+        result.textContent = "Please enter a valid binary number using only 0 and 1.";
+        return;
+      }
+
+      const decimal = parseInt(binary, 2);
+      result.textContent = "Decimal: " + decimal;
+    }
+
+    function toBinary() {
+      const decimalText = document.getElementById("decimal").value.trim();
+      const result = document.getElementById("result2");
+
+      if (decimalText === "" || isNaN(decimalText) || Number(decimalText) < 0) {
+        result.textContent = "Please enter a valid non-negative decimal number.";
+        return;
+      }
+
+      const binary = Number(decimalText).toString(2);
+      result.textContent = "Binary: " + binary;
+    }
+  </script>
 </head>
-
 <body>
+  <div class="container">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
 
-<header>
-<h1>Computer Science Maths Tools</h1>
-<p>Interactive Binary ↔ Decimal Converter</p>
-</header>
+    <div class="card hero-card">
+      <h1>Computer Science Maths & Tools</h1>
+      <p>
+        This page presents an interactive binary and decimal converter built with JavaScript.
+        It demonstrates a simple maths concept used in computer science and explains the calculation in clear language.
+      </p>
+    </div>
 
-<main>
+    <div class="tools-grid">
+      <div class="card">
+        <h2>Binary to Decimal</h2>
+        <p>Enter a binary value such as 1010 and convert it into decimal.</p>
+        <label for="binary">Binary input</label>
+        <input id="binary" type="text" placeholder="Example: 1010">
+        <button onclick="toDecimal()">Convert</button>
+        <div class="result" id="result1">Result will appear here.</div>
+      </div>
 
-<h2>Binary to Decimal</h2>
-<p>Enter a binary number (base-2) to convert it into decimal (base-10).</p>
-<input id="binary" placeholder="e.g. 1010">
-<br>
-<button onclick="toDecimal()">Convert</button>
-<div class="result" id="result1"></div>
+      <div class="card">
+        <h2>Decimal to Binary</h2>
+        <p>Enter a decimal value such as 10 and convert it into binary.</p>
+        <label for="decimal">Decimal input</label>
+        <input id="decimal" type="number" placeholder="Example: 10">
+        <button onclick="toBinary()">Convert</button>
+        <div class="result" id="result2">Result will appear here.</div>
+      </div>
+    </div>
 
-<hr style="margin:30px 0">
-
-<h2>Decimal to Binary</h2>
-<p>Enter a decimal number (base-10) to convert it into binary (base-2).</p>
-<input id="decimal" placeholder="e.g. 10">
-<br>
-<button onclick="toBinary()">Convert</button>
-<div class="result" id="result2"></div>
-
-<hr style="margin:30px 0">
-
-<h2>Maths Explanation</h2>
-<p><strong>Binary</strong> is a base-2 number system used by computers, made up of only 0s and 1s.</p>
-<p><strong>Decimal</strong> is a base-10 system used in everyday counting.</p>
-<p>To convert binary to decimal, each digit is multiplied by powers of 2.</p>
-<p>Example: 1010₂ = (1×2³) + (0×2²) + (1×2¹) + (0×2⁰) = 10₁₀</p>
-
-<br>
-<a href="index.html">← Back to Portfolio</a>
-
-</main>
-
+    <div class="card">
+      <h2>Explanation of the Maths</h2>
+      <p>
+        Binary is a base-2 number system that uses only 0 and 1. Decimal is the base-10 system used in everyday life.
+      </p>
+      <p>
+        To convert binary to decimal, each digit is multiplied by a power of 2 based on its position from right to left. The results are then added together.
+      </p>
+      <p>
+        For example, 1010 in binary means 1×2³ + 0×2² + 1×2¹ + 0×2⁰, which equals 8 + 0 + 2 + 0. This gives the decimal answer 10.
+      </p>
+      <div class="example">
+        1010₂ = (1 × 2³) + (0 × 2²) + (1 × 2¹) + (0 × 2⁰) = 10₁₀
+      </div>
+    </div>
+  </div>
 </body>
 </html>
