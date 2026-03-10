@@ -735,29 +735,45 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="section-heading">
-        <h2>Contact</h2>
-        <p>Professional contact details and online profile links.</p>
+  <section id="contact">
+  <div class="section-heading">
+    <h2>Contact Me</h2>
+    <p>Send me a message directly from my portfolio website.</p>
+  </div>
+
+  <div class="panel content-card">
+    <form id="contact-form">
+
+      <div style="margin-bottom:15px;">
+        <label for="name"><strong>Your Name</strong></label><br>
+        <input type="text" id="name" name="name" required
+               placeholder="Jane Smith"
+               style="width:100%; padding:10px; margin-top:6px;">
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Email</h3>
-          <p><a href="mailto:hjb603@york.ac.uk">hjb603@york.ac.uk</a></p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Location</h3>
-          <p>York, United Kingdom</p>
-        </div>
-
-        <div class="contact-card">
-          <h3>GitHub</h3>
-          <p><a href="https://github.com/hjb603-ops" target="_blank">github.com/hjb603-ops</a></p>
-        </div>
+      <div style="margin-bottom:15px;">
+        <label for="email"><strong>Your Email</strong></label><br>
+        <input type="email" id="email" name="email" required
+               placeholder="jane@example.com"
+               style="width:100%; padding:10px; margin-top:6px;">
       </div>
-    </section>
+
+      <div style="margin-bottom:15px;">
+        <label for="message"><strong>Message</strong></label><br>
+        <textarea id="message" name="message" required rows="5"
+                  placeholder="Say hello..."
+                  style="width:100%; padding:10px; margin-top:6px;"></textarea>
+      </div>
+
+      <button type="submit" id="submit-btn" class="btn btn-primary">
+        Send Message
+      </button>
+
+      <p id="form-status" style="margin-top:12px;"></p>
+
+    </form>
+  </div>
+</section>
 
   </main>
 
