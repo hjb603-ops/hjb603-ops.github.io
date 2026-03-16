@@ -4,79 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Production Diary | Abdul Raheem Kashif</title>
-  <style>
-    :root {
-      --bg: #f3f7fc;
-      --bg-2: #eaf1fb;
-      --surface: rgba(255, 255, 255, 0.92);
-      --text: #172033;
-      --muted: #5b6475;
-      --primary: #163b72;
-      --primary-2: #2457a6;
-      --border: rgba(22, 59, 114, 0.12);
-      --shadow: 0 18px 40px rgba(20, 43, 82, 0.10);
-      --radius: 22px;
-      --max: 900px;
-    }
+ <style>
+:root{
+--bg:#090909;
+--bg2:#12090c;
+--surface:#151517;
+--text:#f3ecee;
+--muted:#b7a8ad;
+--primary:#6b0f1a;
+--accent:#b11e35;
+--border:rgba(177,30,53,.25);
+--radius:18px;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background:
-        radial-gradient(circle at top left, rgba(79, 141, 245, 0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(36, 87, 166, 0.10), transparent 26%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 35%, #f7faff 100%);
-    }
+body{
+background:
+radial-gradient(circle at top left, rgba(177,30,53,.15), transparent 25%),
+linear-gradient(180deg,#12090c,#090909);
+color:var(--text);
+line-height:1.6;
+padding:40px;
+}
 
-    .container {
-      width: min(var(--max), 92%);
-      margin: 0 auto;
-      padding: 42px 0 60px;
-    }
+.container{
+max-width:900px;
+margin:auto;
+}
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: var(--primary);
-      font-weight: bold;
-      text-decoration: none;
-    }
+.card{
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:var(--radius);
+padding:28px;
+margin-bottom:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.45);
+}
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
+h1{
+color:white;
+margin-bottom:10px;
+}
 
-    .card, .entry {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
-    }
+h2{
+color:white;
+margin-bottom:10px;
+}
 
-    h1, h2 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
+p{
+color:var(--muted);
+margin-bottom:12px;
+}
 
-    p {
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
+.entry-date{
+font-size:.9rem;
+color:#e2b7bf;
+margin-bottom:10px;
+}
 
-    strong {
-      color: var(--text);
-    }
-  </style>
+.back-link{
+display:inline-block;
+margin-bottom:20px;
+color:#f3c9d0;
+font-weight:bold;
+text-decoration:none;
+}
+
+.back-link:hover{
+text-decoration:underline;
+}
+</style>
 </head>
 <body>
   <div class="container">
