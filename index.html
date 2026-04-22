@@ -292,32 +292,47 @@ rather than just presenting the finished version.
 </section>
 
 <section id="contact">
-<h2>Contact</h2>
+  <h2>Contact</h2>
 
-<div class="contact-grid">
+  <div class="contact-grid">
 
-<div class="panel">
-<form>
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button>Send</button>
-</form>
-</div>
+    <div class="panel">
+      <form id="contact-form">
+        <div style="margin-bottom:15px;">
+          <label for="name"><strong>Name</strong></label><br>
+          <input type="text" id="name" name="name" placeholder="Name" required>
+        </div>
 
-<div class="panel">
-<h3>About this form</h3>
-<p>This contact form was developed as part of my coursework to make the website more interactive.
-        It is connected to a database using Supabase, which allows messages to be stored and tested.</p>
-   <p>
+        <div style="margin-bottom:15px;">
+          <label for="email"><strong>Email</strong></label><br>
+          <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div style="margin-bottom:15px;">
+          <label for="message"><strong>Message</strong></label><br>
+          <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn">Send</button>
+        <p id="form-status" style="margin-top:12px;"></p>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h3>About this form</h3>
+      <p>
+        This contact form was developed as part of my coursework to make the website more interactive.
+        It is connected to a database using Supabase, which allows messages to be stored and tested.
+      </p>
+      <p>
         This shows how front-end and back-end concepts can be combined in a practical way.
       </p>
-</div>
+    </div>
 
-</div>
+  </div>
 </section>
 
-
+  <section>
   <div class="section-heading">
     <h2>What I Have Improved</h2>
     <p>This section summarises how my website has developed over time.</p>
@@ -325,18 +340,24 @@ rather than just presenting the finished version.
 
   <div class="panel content-card">
     <p>
-At the start, my website was quite basic and mainly focused on structure.
-As I continued developing it, I made several improvements to both design and usability.
+      At the start, my website was quite basic and mainly focused on structure.
+      As I continued developing it, I made several improvements to both design and usability.
+    </p>
 
-For example, I improved the layout by adding clearer sections, better spacing, and more consistent styling.
-This made the site easier to navigate and more visually organised.
+    <p>
+      For example, I improved the layout by adding clearer sections, better spacing, and more consistent styling.
+      This made the site easier to navigate and more visually organised.
+    </p>
 
-I also expanded the content across different sections.
-Instead of keeping descriptions short, I added more detail to explain what I built,
-what tools were used, and what I learned from each part of the process.
+    <p>
+      I also expanded the content across different sections.
+      Instead of keeping descriptions short, I added more detail to explain what I built,
+      what tools were used, and what I learned from each part of the process.
+    </p>
 
-Overall, these changes made the portfolio feel more complete and more suitable for academic evaluation.
-</p>
+    <p>
+      Overall, these changes made the portfolio feel more complete and more suitable for academic evaluation.
+    </p>
   </div>
 </section>
 <footer>
