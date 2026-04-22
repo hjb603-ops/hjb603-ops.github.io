@@ -307,7 +307,11 @@ rather than just presenting the finished version.
 
 <div class="panel">
 <h3>About this form</h3>
-<p>This form makes the website interactive and demonstrates backend integration.</p>
+<p>This contact form was developed as part of my coursework to make the website more interactive.
+        It is connected to a database using Supabase, which allows messages to be stored and tested.</p>
+   <p>
+        This shows how front-end and back-end concepts can be combined in a practical way.
+      </p>
 </div>
 
 </div>
@@ -338,6 +342,54 @@ Overall, these changes made the portfolio feel more complete and more suitable f
 <footer>
 <p>© 2026 Abdul Raheem Kashif</p>
 </footer>
+<script>
+  const SUPABASE_URL = "https://dcdrcctmrholdsolcfih.supabase.co";
+  const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjZHJjY3RtcmhvbGRzb2xjZmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0NDI4ODgsImV4cCI6MjA4ODAxODg4OH0.NW4MnR19mLprZ9MJ5j6Wg00gTPnyH0fhjE4fvpWMUJ0";
 
+  document.getElementById("contact-form").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const btn = document.getElementById("submit-btn");
+    const status = document.getElementById("form-status");
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    status.textContent = "";
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON,
+          "Authorization": `Bearer ${SUPABASE_ANON}`,
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify([{ name, email, message }])
+      });
+
+      const result = await response.text();
+      console.log("Status:", response.status);
+      console.log("Response:", result);
+
+      if (response.ok) {
+        status.textContent = " Message sent successfully!";
+        event.target.reset();
+      } else {
+        status.textContent = "Error.";
+      }
+
+    } catch (err) {
+      console.error(err);
+      status.textContent = "Connection error.";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+    }
+  });
+</script>
 </body>
 </html>
