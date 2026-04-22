@@ -365,21 +365,24 @@ Overall, these changes made the portfolio feel more complete and more suitable f
         headers: {
           "Content-Type": "application/json",
           "apikey": SUPABASE_ANON,
-          "Authorization": `Bearer ${SUPABASE_ANON}`,
-          "Prefer": "return=representation"
+          "Authorization": `Bearer ${SUPABASE_ANON}`
         },
-        body: JSON.stringify([{ name, email, message }])
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
       });
 
-      const result = await response.text();
+      const data = await response.json().catch(() => ({}));
       console.log("Status:", response.status);
-      console.log("Response:", result);
+      console.log("Data:", data);
 
-      if (response.ok) {
-        status.textContent = " Message sent successfully!";
+      if (response.status === 201) {
+        status.textContent = "✓ Message sent successfully!";
         event.target.reset();
       } else {
-        status.textContent = "Error.";
+        status.textContent = "Error sending message.";
       }
 
     } catch (err) {
